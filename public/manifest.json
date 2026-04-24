@@ -1,0 +1,22 @@
+{
+  "name": "AA AC Service",
+  "short_name": "AA AC",
+  "description": "Professional Commercial AC Repair & Maintenance in Chennai",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F3C87",
+  "theme_color": "#0F3C87",
+  "icons": [
+    {
+      "src": "/logo/logo-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
