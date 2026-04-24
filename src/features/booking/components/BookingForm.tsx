@@ -22,7 +22,7 @@ export function BookingForm() {
   // Step 1 form
   const form1 = useForm<Step1Data>({ resolver: zodResolver(step1Schema), defaultValues: formData as Step1Data })
   // Step 2 form
-  const form2 = useForm<Step2Data>({ resolver: zodResolver(step2Schema), defaultValues: { acUnits: 1, ...formData as Step2Data } })
+  const form2 = useForm<Step2Data>({ resolver: zodResolver(step2Schema), defaultValues: { ...(formData as Step2Data), acUnits: (formData as Step2Data).acUnits ?? 1 } })
   // Step 3 form
   const form3 = useForm<Step3Data>({ resolver: zodResolver(step3Schema), defaultValues: formData as Step3Data })
 
