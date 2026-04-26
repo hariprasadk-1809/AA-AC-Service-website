@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Star, Quote } from 'lucide-react'
 import { Section, SectionHeader } from '@/components/layout/Section'
 import { PageWrapper } from '@/components/layout/PageWrapper'
-import { getPublishedReviews, subscribeToReviews, type Review } from '@/lib/supabase/api'
+import { getPublishedReviews, subscribeToReviews } from '@/lib/supabase/api'
 
 const FALLBACK_REVIEWS = [
   { id:'f1', customer_name:'Ramesh Krishnamurthy', rating:5, comment:'AA AC Service has been our go-to partner for over 3 years. When our central cooling system failed during peak weekend footfall, they were on-site within 90 minutes. Exceptional reliability.', company:'Nexus Vijaya Mall', role:'Facility Manager', is_published:true, review_token:'', created_at:'' },
