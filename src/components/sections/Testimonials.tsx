@@ -61,7 +61,7 @@ export function Testimonials() {
               <div key={review.id} className="bg-white rounded-card shadow-card p-8 flex flex-col border border-brand-light hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300">
                 <StarRating rating={review.rating} />
                 <Quote className="w-8 h-8 text-brand-light mt-4 mb-2" />
-                <p className="font-body text-text-secondary text-sm leading-relaxed flex-1 mb-6">&ldquo;{review.comment}&rdquo;</p>
+                <p className="font-body text-text-secondary text-sm leading-relaxed flex-1 mb-6">&ldquo;{review.review_text}&rdquo;</p>
                 <div className="flex items-center gap-3 pt-4 border-t border-brand-light">
                   <div className="w-10 h-10 rounded-full bg-brand-dark2 flex items-center justify-center text-white font-heading font-bold text-sm shrink-0">
                     {review.customer_name?.charAt(0) || 'C'}
