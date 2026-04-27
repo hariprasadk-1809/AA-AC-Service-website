@@ -46,7 +46,7 @@ export async function submitReview(
       body:    JSON.stringify({
         customer_name: data.customer_name,
         rating:        data.rating,
-        comment:       data.comment,
+        review_text:   data.comment,
       }),
     }
   )
