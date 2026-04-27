@@ -44,11 +44,14 @@ export async function submitReview(
         customer_name: data.customer_name,
         rating:        data.rating,
         review_text:   data.comment,
-        // is_published stays false — technician approves from app
-        // Once app approval is ready, remove this comment
+        is_published:  true, // Auto publish when client submits
       }),
     }
   )
+  if (!res.ok) {
+    const err = await res.text()
+    console.error('Review submit error:', err)
+  }
   return res.ok
 }
 

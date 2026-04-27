@@ -28,7 +28,7 @@ export default function ReviewPage() {
 
     getReviewByToken(t).then((data) => {
       if (!data) { setNotFound(true) }
-      else if (data.customer_name && data.rating) { setAlreadyDone(true) }
+      else if (data.rating && data.rating > 0) { setAlreadyDone(true) }
       else { setReview(data) }
       setLoading(false)
     }).catch(() => { setNotFound(true); setLoading(false) })
