@@ -12,7 +12,6 @@ const BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
 // REVIEWS
 // ════════════════════════════════════════
 
-// Fetch all published reviews for website testimonials
 export async function getPublishedReviews(): Promise<Review[]> {
   const res = await fetch(
     `${BASE}/rest/v1/reviews?is_published=eq.true&order=created_at.desc`,
@@ -22,7 +21,6 @@ export async function getPublishedReviews(): Promise<Review[]> {
   return res.json()
 }
 
-// Get a single review by token (for the review submission page)
 export async function getReviewByToken(token: string): Promise<Review | null> {
   const res = await fetch(
     `${BASE}/rest/v1/reviews?review_token=eq.${token}&limit=1`,
@@ -33,7 +31,6 @@ export async function getReviewByToken(token: string): Promise<Review | null> {
   return data[0] || null
 }
 
-// Submit a review (client fills the form via unique link)
 export async function submitReview(
   token: string,
   data: { customer_name: string; rating: number; comment: string }
@@ -47,6 +44,8 @@ export async function submitReview(
         customer_name: data.customer_name,
         rating:        data.rating,
         review_text:   data.comment,
+        // is_published stays false — technician approves from app
+        // Once app approval is ready, remove this comment
       }),
     }
   )
@@ -57,7 +56,6 @@ export async function submitReview(
 // ENQUIRIES
 // ════════════════════════════════════════
 
-// Submit enquiry from contact form → saves to Supabase → app sees it instantly
 export async function submitEnquiry(data: Enquiry): Promise<boolean> {
   const res = await fetch(
     `${BASE}/rest/v1/enquiries`,
@@ -74,11 +72,15 @@ export async function submitEnquiry(data: Enquiry): Promise<boolean> {
       }),
     }
   )
+  if (!res.ok) {
+    const err = await res.text()
+    console.error('Enquiry submit error:', err)
+  }
   return res.ok
 }
 
 // ════════════════════════════════════════
-// REALTIME — live review updates on website
+// REALTIME
 // ════════════════════════════════════════
 export function subscribeToReviews(
   onUpdate: (review: Review) => void
