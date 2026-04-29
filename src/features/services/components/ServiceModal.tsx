@@ -3,7 +3,6 @@ import { CheckCircle2 } from 'lucide-react'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
-import { formatCurrency } from '@/lib/utils/formatters'
 import type { Service } from '../data/services.data'
 
 interface ServiceModalProps {
@@ -26,9 +25,6 @@ export function ServiceModal({ service, onClose, onBook }: ServiceModalProps) {
             <h2 className="text-2xl font-bold text-text-primary font-heading">
               {service.title}
             </h2>
-            <p className="text-brand-accent font-heading font-semibold mt-1">
-              From {formatCurrency(service.from)}
-            </p>
           </div>
         </div>
 

@@ -1,7 +1,6 @@
 'use client'
 import { Wrench, Sparkles, ShieldCheck, Droplets, ArrowRight, MousePointerClick } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
-import { formatCurrency } from '@/lib/utils/formatters'
 import type { Service } from '../data/services.data'
 
 const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -45,29 +44,17 @@ export function ServiceCard({ service, onOpen, onBook }: ServiceCardProps) {
         {service.shortDesc}
       </p>
 
-      {/* 
-        Mobile:  always visible — "Tap to see more"
-        Desktop: hidden until hover — "Click to see more"
-      */}
+      {/* Mobile: always visible — Desktop: shows on hover */}
       <div className="mb-4">
-        {/* Mobile only — always shown */}
-        <p className="flex sm:hidden items-center gap-1.5 text-brand-accent text-xs font-heading font-semibold
-          bg-brand-light px-3 py-1.5 rounded-full w-fit">
+        <p className="flex sm:hidden items-center gap-1.5 text-brand-accent text-xs font-heading font-semibold bg-brand-light px-3 py-1.5 rounded-full w-fit">
           <MousePointerClick className="w-3.5 h-3.5 shrink-0" />
           Tap to see more
         </p>
-        {/* Desktop only — shows on hover */}
-        <p className="hidden sm:flex items-center gap-1.5 text-brand-accent/70 text-xs font-heading font-medium
-          opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <p className="hidden sm:flex items-center gap-1.5 text-brand-accent/70 text-xs font-heading font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <MousePointerClick className="w-3.5 h-3.5 shrink-0" />
           Click to see more details
         </p>
       </div>
-
-      {/* Price */}
-      <p className="font-heading font-bold text-brand-accent mb-4">
-        From {formatCurrency(service.from)}
-      </p>
 
       {/* Book button */}
       <button

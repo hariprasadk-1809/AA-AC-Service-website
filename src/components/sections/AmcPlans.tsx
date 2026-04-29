@@ -100,16 +100,6 @@ export function AmcPlans() {
                 {plan.desc}
               </p>
 
-              {/* Price */}
-              <div className="mb-6">
-                <span className={`font-heading font-bold text-4xl ${plan.highlight ? 'text-brand-dark2' : 'text-white'}`}>
-                  {formatCurrency(plan.price)}
-                </span>
-                <span className={`font-body text-sm ml-2 ${plan.highlight ? 'text-text-muted' : 'text-white/60'}`}>
-                  {plan.period}
-                </span>
-              </div>
-
               {/* Features */}
               <ul className="space-y-3 flex-1 mb-8">
                 {plan.features.map((f) => (
@@ -132,9 +122,7 @@ export function AmcPlans() {
           ))}
         </div>
 
-        <p className="text-center text-white/50 text-sm font-body mt-8">
-          * Prices per AC unit. Multi-unit discounts available. Contact us for a custom quote.
-        </p>
+
       </PageWrapper>
     </Section>
   )
